@@ -27,7 +27,7 @@
  将 SYTabBarViewController 文件夹拽入项目中，导入头文件：#import "SYTabBarViewController.h"
 
 ## 使用
-1.继承BLTabBarViewController
+1.继承SYTabBarViewController
 
 2.实现如下两个方法进行配置:
 
