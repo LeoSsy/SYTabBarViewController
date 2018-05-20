@@ -20,13 +20,14 @@
  
  将 BLTabBarViewController 文件夹拽入项目中，导入头文件：#import "BLTabBarViewController.h"
 
- 
 ## 使用
 1.继承BLTabBarViewController
+
 2.实现如下两个方法进行配置:
     - (void)configTabBarController;
     - (void)buildChildControllers;
-    示例：
+    
+示例：
 
     ''' objc
     - (void)configTabBarController {
