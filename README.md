@@ -30,7 +30,7 @@
     
 示例：
 
-    ''' objc
+
     - (void)configTabBarController {
     //配置标题大小 颜色
     self.titleScrollViewColor = [UIColor whiteColor];
@@ -66,7 +66,7 @@
     [self addChildController:@"OneTableViewController" title:@"资料" imageName:@"kehu_icon_ziliao1" highImage:@"kehu_icon_ziliao2"];
     [self addChildController:@"OneTableViewController" title:@"评测" imageName:@"kehu_icon_ceping1" highImage:@"kehu_icon_ceping2"];
     }
-    '''
+    
 
 
 ## 其他
