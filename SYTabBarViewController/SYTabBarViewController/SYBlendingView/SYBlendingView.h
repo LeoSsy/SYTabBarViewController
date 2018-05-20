@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BLBlendingLabel.h"
+#import "SYBlendingLabel.h"
 
-@interface BLBlendingView : UIView
+@interface SYBlendingView : UIView
 /**文本控件*/
-@property(nonatomic,strong)BLBlendingLabel *label;
+@property(nonatomic,strong)SYBlendingLabel *label;
 /**文本*/
 @property(nonatomic,strong)NSString *text;
 /**默认图片*/

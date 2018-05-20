@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIViewController (BL)
+@interface UIViewController (SY)
 /**默认图片*/
 @property(nonatomic,strong)NSString *norImage;
 /**高亮图片*/

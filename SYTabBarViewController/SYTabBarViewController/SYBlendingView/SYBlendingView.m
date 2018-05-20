@@ -6,14 +6,14 @@
 //  Copyright © 2018年 bianla. All rights reserved.
 //
 
-#import "BLBlendingView.h"
+#import "SYBlendingView.h"
 
-typedef NS_ENUM(NSUInteger, BLBlendingViewType) {
-    BLBlendingViewTypeText,//仅仅显示文本 不显示图片
-    BLBlendingViewTypeImage,//同时显示文本图片
+typedef NS_ENUM(NSUInteger, SYBlendingViewType) {
+    SYBlendingViewTypeText,//仅仅显示文本 不显示图片
+    SYBlendingViewTypeImage,//同时显示文本图片
 };
 
-@interface BLBlendingView()
+@interface SYBlendingView()
 /**背景视图*/
 @property(nonatomic,strong)UIImageView *bgImageV ;
 /**高亮视图*/
@@ -27,16 +27,16 @@ typedef NS_ENUM(NSUInteger, BLBlendingViewType) {
 /**标题距离图片的间距*/
 @property(nonatomic,assign)CGFloat margin ;
 /**显示类型*/
-@property(nonatomic,assign)BLBlendingViewType displayType;
+@property(nonatomic,assign)SYBlendingViewType displayType;
 @end
 
-@implementation BLBlendingView
+@implementation SYBlendingView
 
 /**
  初始化方法 带文字图片渐变的效果
  */
 + (instancetype)blendViewWithText:(NSString*)text image:(NSString*)imageName highlitedImage:(NSString*)highlitedImageName margin:(CGFloat)margin{
-    return  [[BLBlendingView alloc] initWithFrame:CGRectZero text:text image:imageName highlitedImage:highlitedImageName margin:margin normalColor:[UIColor blackColor] highlitedColor:[UIColor redColor] textFont:[UIFont systemFontOfSize:15] type:BLBlendingViewTypeImage];
+    return  [[SYBlendingView alloc] initWithFrame:CGRectZero text:text image:imageName highlitedImage:highlitedImageName margin:margin normalColor:[UIColor blackColor] highlitedColor:[UIColor redColor] textFont:[UIFont systemFontOfSize:15] type:SYBlendingViewTypeImage];
 }
 
 
@@ -44,10 +44,10 @@ typedef NS_ENUM(NSUInteger, BLBlendingViewType) {
  初始化方法 仅带文字渐变的效果 不显示图片
  */
 + (instancetype)blendViewWithText:(NSString*)text normalColor:(UIColor*)normalColor  highlitedColor:(UIColor*)highlitedColor textFont:(UIFont*)textFont{
-    return [[BLBlendingView alloc] initWithFrame:CGRectZero text:text image:nil highlitedImage:nil margin:0 normalColor:normalColor highlitedColor:highlitedColor textFont:textFont type:BLBlendingViewTypeText];
+    return [[SYBlendingView alloc] initWithFrame:CGRectZero text:text image:nil highlitedImage:nil margin:0 normalColor:normalColor highlitedColor:highlitedColor textFont:textFont type:SYBlendingViewTypeText];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame text:(NSString*)text image:(NSString*)imageName highlitedImage:(NSString*)highlitedImageName margin:(CGFloat)margin normalColor:(UIColor*)normalColor  highlitedColor:(UIColor*)highlitedColor textFont:(UIFont*)textFont type:(BLBlendingViewType)type
+- (instancetype)initWithFrame:(CGRect)frame text:(NSString*)text image:(NSString*)imageName highlitedImage:(NSString*)highlitedImageName margin:(CGFloat)margin normalColor:(UIColor*)normalColor  highlitedColor:(UIColor*)highlitedColor textFont:(UIFont*)textFont type:(SYBlendingViewType)type
 {
     if (self = [super initWithFrame:frame]) {
         
@@ -55,12 +55,12 @@ typedef NS_ENUM(NSUInteger, BLBlendingViewType) {
         self.userInteractionEnabled = YES;
         self.contentMode = UIViewContentModeScaleAspectFit;
         
-        self.label = [[BLBlendingLabel alloc] init];
+        self.label = [[SYBlendingLabel alloc] init];
         self.label.textAlignment = NSTextAlignmentCenter;
         [self addSubview:self.label];
         
         //仅显示文本
-        if (type == BLBlendingViewTypeImage) {
+        if (type == SYBlendingViewTypeImage) {
             UIImageView *bgImageV = [[UIImageView alloc] init];
             bgImageV.image = [UIImage imageNamed:imageName];
             [self addSubview:bgImageV];
@@ -164,7 +164,7 @@ typedef NS_ENUM(NSUInteger, BLBlendingViewType) {
     [super layoutSubviews];
     
     //只显示文本
-    if (self.displayType == BLBlendingViewTypeText) {
+    if (self.displayType == SYBlendingViewTypeText) {
         CGFloat labelH = self.label.font.pointSize+5;
         CGFloat labelY = (self.bounds.size.height - labelH)*0.5;
         self.label.frame = CGRectMake(0, labelY ,self.bounds.size.width, labelH);

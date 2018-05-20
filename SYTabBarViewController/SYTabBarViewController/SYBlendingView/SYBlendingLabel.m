@@ -6,9 +6,9 @@
 //  Copyright © 2018年 bianla. All rights reserved.
 //
 
-#import "BLBlendingLabel.h"
+#import "SYBlendingLabel.h"
 
-@implementation BLBlendingLabel
+@implementation SYBlendingLabel
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];

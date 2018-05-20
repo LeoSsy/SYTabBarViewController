@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BLBlendingLabel : UILabel
+@interface SYBlendingLabel : UILabel
 /**绘制进度*/
 @property(nonatomic,assign)CGFloat progress;
 /**填充颜色*/

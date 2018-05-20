@@ -6,9 +6,9 @@
 //  Copyright © 2016年 KUNROU. All rights reserved.
 //
 
-#import "BLTabBarViewController.h"
-#import "BLBlendingView.h"
-#import "UIViewController+BL.h"
+#import "SYTabBarViewController.h"
+#import "SYBlendingView.h"
+#import "UIViewController+SY.h"
 //屏幕尺寸
 #define SYScreenW [UIScreen mainScreen].bounds.size.width
 #define SYScreenH [UIScreen mainScreen].bounds.size.height
@@ -17,7 +17,7 @@
 //默认缩放比例
 #define BLScaleEffectPercent 1.1
 
-@interface BLTabBarViewController ()<UIScrollViewDelegate>
+@interface SYTabBarViewController ()<UIScrollViewDelegate>
 
 /** 顶部视图的所有子控件数组 */
 @property (nonatomic, strong) NSMutableArray *topScroSubviews;
@@ -35,7 +35,7 @@
 @property (nonatomic, assign) CGFloat totalWidth;
 
 //记录当前选中的标题label
-@property(nonatomic,weak)BLBlendingView *selectedBlendView;
+@property(nonatomic,weak)SYBlendingView *selectedBlendView;
 
 /** 标题下划线视图 */
 @property (nonatomic, weak) UIView *titleUnderline;
@@ -48,7 +48,7 @@
 
 @end
 
-@implementation BLTabBarViewController
+@implementation SYTabBarViewController
 
 #pragma mark - 初始化方法
 ///如果当前类是通过代码创建的会进入这个方法
@@ -232,20 +232,20 @@
     // 添加所有的标题
     for (int i = 0; i < count; i++) {
          UIViewController *vc = self.childViewControllers[i];
-        BLBlendingView *topTabBar = nil;
+        SYBlendingView *topTabBar = nil;
         if (vc.norImage && vc.highImage) {
-            topTabBar = [BLBlendingView blendViewWithText:vc.title image:vc.norImage highlitedImage:vc.highImage margin:5];
+            topTabBar = [SYBlendingView blendViewWithText:vc.title image:vc.norImage highlitedImage:vc.highImage margin:5];
             topTabBar.normalColor = self.normalColor;
             topTabBar.highlitedColor = self.selectedColor;
         }else{
-            topTabBar = [BLBlendingView blendViewWithText:vc.title normalColor:self.normalColor highlitedColor:self.selectedColor textFont:self.titleFont?self.titleFont:BLTabBarNormalTitleFont];
+            topTabBar = [SYBlendingView blendViewWithText:vc.title normalColor:self.normalColor highlitedColor:self.selectedColor textFont:self.titleFont?self.titleFont:BLTabBarNormalTitleFont];
         }
          topTabBar.tag = i;
          topTabBar.backgroundColor = [UIColor clearColor];
          topTabBar.label.font = self.titleFont?self.titleFont:BLTabBarNormalTitleFont;
          topTabBar.label.text = vc.title;
          labelW = [self.allTitleWidths[i] floatValue];
-         BLBlendingView *lastLabel = [self.topScroSubviews lastObject];
+         SYBlendingView *lastLabel = [self.topScroSubviews lastObject];
         if (i==0) {//第一个标题加上首部的间距
             labelX = self.firstMargin + CGRectGetMaxX(lastLabel.frame);
         }else if(i==count-1){//最后一个标题加上尾部的间距
@@ -285,7 +285,7 @@
 - (void)topViewClick:(UITapGestureRecognizer *)tap
 {
     //获取点击的标题
-    BLBlendingView *label = (BLBlendingView *)tap.view;
+    SYBlendingView *label = (SYBlendingView *)tap.view;
     NSInteger i = label.tag;
     //记录标题被点击
     self.isClickedTitle = YES;
@@ -307,7 +307,7 @@
 }
 
 #pragma mark 选中一标题label
-- (void)selectTitleFromView:(BLBlendingView *)blendView
+- (void)selectTitleFromView:(SYBlendingView *)blendView
 {
     //防止重复选中同一个
     if (self.selectedBlendView == blendView )  return;
@@ -352,7 +352,7 @@
 }
 
 // 设置下标的位置
-- (void)setUpUnderLine:(BLBlendingView *)blendingView
+- (void)setUpUnderLine:(SYBlendingView *)blendingView
 {
     // 获取文字尺寸
     CGRect titleFrame = [blendingView.label.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.titleFont?self.titleFont:BLTabBarNormalTitleFont} context:nil];
@@ -380,7 +380,7 @@
 }
 
 // 让选中的按钮居中显示
-- (void)setLabelTitleCenter:(BLBlendingView *)label
+- (void)setLabelTitleCenter:(SYBlendingView *)label
 {
     // 设置标题滚动区域的偏移量
     CGFloat offsetX = label.center.x - SYScreenW * 0.5;
@@ -402,9 +402,9 @@
         // 获取偏移量
         CGFloat offsetX = scrollView.contentOffset.x;
         NSInteger leftIndex = offsetX / SYScreenW;
-        BLBlendingView *leftView = self.topScroSubviews[leftIndex];
+        SYBlendingView *leftView = self.topScroSubviews[leftIndex];
         NSInteger rightIndex = leftIndex + 1;
-        BLBlendingView *rightView = nil;
+        SYBlendingView *rightView = nil;
         if (rightIndex < self.topScroSubviews.count) {
             rightView = self.topScroSubviews[rightIndex];
         }
@@ -438,7 +438,7 @@
  @param rightView 右边的视图
  @param leftView 左边的视图
  */
-- (void)setUnderLineOffset:(CGFloat)offsetX rightView:(BLBlendingView *)rightView leftView:(BLBlendingView *)leftView
+- (void)setUnderLineOffset:(CGFloat)offsetX rightView:(SYBlendingView *)rightView leftView:(SYBlendingView *)leftView
 {
     //记录标题是否点击 如果点击了就不要再设置偏移
     if (self.isClickedTitle) return;
@@ -459,7 +459,7 @@
  @param rightView 右边的控件
  @param leftView 左边的控件
  */
-- (void)setGradientWithOffset:(CGFloat)offsetX rightView:(BLBlendingView *)rightView leftView:(BLBlendingView *)leftView
+- (void)setGradientWithOffset:(CGFloat)offsetX rightView:(SYBlendingView *)rightView leftView:(SYBlendingView *)leftView
 {
     //如果用户设置不显示渐变就直接return
     if (!self.isShowGradient) return;
@@ -499,7 +499,7 @@
  @param rightView 右边的控件
  @param leftView 左边的控件
  */
-- (void)setScaleWithOffset:(CGFloat)offsetX rightView:(BLBlendingView *)rightView leftView:(BLBlendingView *)leftView
+- (void)setScaleWithOffset:(CGFloat)offsetX rightView:(SYBlendingView *)rightView leftView:(SYBlendingView *)leftView
 {
     //如果用户不需要缩放 就不设置
     if (!self.isScaleEffect) return;

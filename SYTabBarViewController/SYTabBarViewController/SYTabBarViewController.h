@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, UnderLineType) {
 //导航栏的高度
 static CGFloat SYTabBarH = 64;
 
-@interface BLTabBarViewController : UIViewController
+@interface SYTabBarViewController : UIViewController
 
 /** 整体内容View 包含标题好内容滚动视图 */
 @property (nonatomic, weak) UIView *contentView;

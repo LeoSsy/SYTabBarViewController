@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BLTabBarViewController.h"
+#import "SYTabBarViewController.h"
 
-@interface ViewController : BLTabBarViewController
+@interface ViewController : SYTabBarViewController
 
 
 @end

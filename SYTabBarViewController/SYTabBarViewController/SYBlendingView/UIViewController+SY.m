@@ -6,12 +6,12 @@
 //  Copyright © 2018年 bianla. All rights reserved.
 //
 
-#import "UIViewController+BL.h"
+#import "UIViewController+SY.h"
 #import <objc/runtime.h>
 
 static const NSString * norImageKey = nil;
 static const NSString * highlitedImageKey = nil;
-@implementation UIViewController (BL)
+@implementation UIViewController (SY)
 
 @dynamic norImage,highImage;
 

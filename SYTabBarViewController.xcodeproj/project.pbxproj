@@ -17,10 +17,10 @@
 		04E66C8920B10C320078BE8A /* TwoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C6920B10C310078BE8A /* TwoTableViewController.m */; };
 		04E66C8A20B10C320078BE8A /* GlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C6B20B10C310078BE8A /* GlobalConfig.m */; };
 		04E66C8B20B10C320078BE8A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C6C20B10C310078BE8A /* AppDelegate.m */; };
-		04E66C8C20B10C320078BE8A /* BLTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C6F20B10C310078BE8A /* BLTabBarViewController.m */; };
-		04E66C8D20B10C320078BE8A /* UIViewController+BL.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C7220B10C310078BE8A /* UIViewController+BL.m */; };
-		04E66C8E20B10C320078BE8A /* BLBlendingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C7620B10C310078BE8A /* BLBlendingLabel.m */; };
-		04E66C8F20B10C320078BE8A /* BLBlendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C7720B10C310078BE8A /* BLBlendingView.m */; };
+		04E66C8C20B10C320078BE8A /* SYTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C6F20B10C310078BE8A /* SYTabBarViewController.m */; };
+		04E66C8D20B10C320078BE8A /* UIViewController+SY.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C7220B10C310078BE8A /* UIViewController+SY.m */; };
+		04E66C8E20B10C320078BE8A /* SYBlendingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C7620B10C310078BE8A /* SYBlendingLabel.m */; };
+		04E66C8F20B10C320078BE8A /* SYBlendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E66C7720B10C310078BE8A /* SYBlendingView.m */; };
 		04E66C9020B10C320078BE8A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E66C7820B10C310078BE8A /* Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -42,9 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04004DB520AC3AEB003FDA7F /* BLTabBarViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLTabBarViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04004DCD20AC3AEB003FDA7F /* BLTabBarViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLTabBarViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		04004DD820AC3AEB003FDA7F /* BLTabBarViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLTabBarViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04004DB520AC3AEB003FDA7F /* SYTabBarViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SYTabBarViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04004DCD20AC3AEB003FDA7F /* SYTabBarViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SYTabBarViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04004DD820AC3AEB003FDA7F /* SYTabBarViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SYTabBarViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E66C5C20B10C310078BE8A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04E66C5D20B10C310078BE8A /* GlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConfig.h; sourceTree = "<group>"; };
 		04E66C5E20B10C310078BE8A /* TwoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoTableViewController.h; sourceTree = "<group>"; };
@@ -60,14 +60,14 @@
 		04E66C6B20B10C310078BE8A /* GlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConfig.m; sourceTree = "<group>"; };
 		04E66C6C20B10C310078BE8A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		04E66C6D20B10C310078BE8A /* OneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneTableViewController.h; sourceTree = "<group>"; };
-		04E66C6F20B10C310078BE8A /* BLTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLTabBarViewController.m; sourceTree = "<group>"; };
-		04E66C7020B10C310078BE8A /* BLTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLTabBarViewController.h; sourceTree = "<group>"; };
-		04E66C7220B10C310078BE8A /* UIViewController+BL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BL.m"; sourceTree = "<group>"; };
-		04E66C7320B10C310078BE8A /* BLBlendingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLBlendingView.h; sourceTree = "<group>"; };
-		04E66C7420B10C310078BE8A /* BLBlendingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLBlendingLabel.h; sourceTree = "<group>"; };
-		04E66C7520B10C310078BE8A /* UIViewController+BL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BL.h"; sourceTree = "<group>"; };
-		04E66C7620B10C310078BE8A /* BLBlendingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLBlendingLabel.m; sourceTree = "<group>"; };
-		04E66C7720B10C310078BE8A /* BLBlendingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLBlendingView.m; sourceTree = "<group>"; };
+		04E66C6F20B10C310078BE8A /* SYTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYTabBarViewController.m; sourceTree = "<group>"; };
+		04E66C7020B10C310078BE8A /* SYTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYTabBarViewController.h; sourceTree = "<group>"; };
+		04E66C7220B10C310078BE8A /* UIViewController+SY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SY.m"; sourceTree = "<group>"; };
+		04E66C7320B10C310078BE8A /* SYBlendingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYBlendingView.h; sourceTree = "<group>"; };
+		04E66C7420B10C310078BE8A /* SYBlendingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYBlendingLabel.h; sourceTree = "<group>"; };
+		04E66C7520B10C310078BE8A /* UIViewController+SY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SY.h"; sourceTree = "<group>"; };
+		04E66C7620B10C310078BE8A /* SYBlendingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYBlendingLabel.m; sourceTree = "<group>"; };
+		04E66C7720B10C310078BE8A /* SYBlendingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYBlendingView.m; sourceTree = "<group>"; };
 		04E66C7820B10C310078BE8A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E66C7920B10C310078BE8A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +100,7 @@
 		04004DAC20AC3AEB003FDA7F = {
 			isa = PBXGroup;
 			children = (
-				04E66C5B20B10C310078BE8A /* BLTabBarViewController */,
+				04E66C5B20B10C310078BE8A /* SYTabBarViewController */,
 				04004DB620AC3AEB003FDA7F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,17 +108,17 @@
 		04004DB620AC3AEB003FDA7F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04004DB520AC3AEB003FDA7F /* BLTabBarViewController.app */,
-				04004DCD20AC3AEB003FDA7F /* BLTabBarViewControllerTests.xctest */,
-				04004DD820AC3AEB003FDA7F /* BLTabBarViewControllerUITests.xctest */,
+				04004DB520AC3AEB003FDA7F /* SYTabBarViewController.app */,
+				04004DCD20AC3AEB003FDA7F /* SYTabBarViewControllerTests.xctest */,
+				04004DD820AC3AEB003FDA7F /* SYTabBarViewControllerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		04E66C5B20B10C310078BE8A /* BLTabBarViewController */ = {
+		04E66C5B20B10C310078BE8A /* SYTabBarViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04E66C6E20B10C310078BE8A /* BLTabBarViewController */,
+				04E66C6E20B10C310078BE8A /* SYTabBarViewController */,
 				04E66C5E20B10C310078BE8A /* TwoTableViewController.h */,
 				04E66C6920B10C310078BE8A /* TwoTableViewController.m */,
 				04E66C6A20B10C310078BE8A /* ThreeTableViewController.h */,
@@ -137,38 +137,38 @@
 				04E66C7820B10C310078BE8A /* Info.plist */,
 				04E66C6120B10C310078BE8A /* Assets.xcassets */,
 			);
-			path = BLTabBarViewController;
+			path = SYTabBarViewController;
 			sourceTree = "<group>";
 		};
-		04E66C6E20B10C310078BE8A /* BLTabBarViewController */ = {
+		04E66C6E20B10C310078BE8A /* SYTabBarViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04E66C7020B10C310078BE8A /* BLTabBarViewController.h */,
-				04E66C6F20B10C310078BE8A /* BLTabBarViewController.m */,
-				04E66C7120B10C310078BE8A /* BLBlendingView */,
+				04E66C7020B10C310078BE8A /* SYTabBarViewController.h */,
+				04E66C6F20B10C310078BE8A /* SYTabBarViewController.m */,
+				04E66C7120B10C310078BE8A /* SYBlendingView */,
 			);
-			path = BLTabBarViewController;
+			path = SYTabBarViewController;
 			sourceTree = "<group>";
 		};
-		04E66C7120B10C310078BE8A /* BLBlendingView */ = {
+		04E66C7120B10C310078BE8A /* SYBlendingView */ = {
 			isa = PBXGroup;
 			children = (
-				04E66C7320B10C310078BE8A /* BLBlendingView.h */,
-				04E66C7720B10C310078BE8A /* BLBlendingView.m */,
-				04E66C7420B10C310078BE8A /* BLBlendingLabel.h */,
-				04E66C7620B10C310078BE8A /* BLBlendingLabel.m */,
-				04E66C7520B10C310078BE8A /* UIViewController+BL.h */,
-				04E66C7220B10C310078BE8A /* UIViewController+BL.m */,
+				04E66C7320B10C310078BE8A /* SYBlendingView.h */,
+				04E66C7720B10C310078BE8A /* SYBlendingView.m */,
+				04E66C7420B10C310078BE8A /* SYBlendingLabel.h */,
+				04E66C7620B10C310078BE8A /* SYBlendingLabel.m */,
+				04E66C7520B10C310078BE8A /* UIViewController+SY.h */,
+				04E66C7220B10C310078BE8A /* UIViewController+SY.m */,
 			);
-			path = BLBlendingView;
+			path = SYBlendingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04004DB420AC3AEB003FDA7F /* BLTabBarViewController */ = {
+		04004DB420AC3AEB003FDA7F /* SYTabBarViewController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04004DE120AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "BLTabBarViewController" */;
+			buildConfigurationList = 04004DE120AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "SYTabBarViewController" */;
 			buildPhases = (
 				04004DB120AC3AEB003FDA7F /* Sources */,
 				04004DB220AC3AEB003FDA7F /* Frameworks */,
@@ -178,14 +178,14 @@
 			);
 			dependencies = (
 			);
-			name = BLTabBarViewController;
+			name = SYTabBarViewController;
 			productName = tabBarMoveAnimation;
-			productReference = 04004DB520AC3AEB003FDA7F /* BLTabBarViewController.app */;
+			productReference = 04004DB520AC3AEB003FDA7F /* SYTabBarViewController.app */;
 			productType = "com.apple.product-type.application";
 		};
-		04004DCC20AC3AEB003FDA7F /* BLTabBarViewControllerTests */ = {
+		04004DCC20AC3AEB003FDA7F /* SYTabBarViewControllerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04004DE420AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "BLTabBarViewControllerTests" */;
+			buildConfigurationList = 04004DE420AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "SYTabBarViewControllerTests" */;
 			buildPhases = (
 				04004DC920AC3AEB003FDA7F /* Sources */,
 				04004DCA20AC3AEB003FDA7F /* Frameworks */,
@@ -196,14 +196,14 @@
 			dependencies = (
 				04004DCF20AC3AEB003FDA7F /* PBXTargetDependency */,
 			);
-			name = BLTabBarViewControllerTests;
+			name = SYTabBarViewControllerTests;
 			productName = tabBarMoveAnimationTests;
-			productReference = 04004DCD20AC3AEB003FDA7F /* BLTabBarViewControllerTests.xctest */;
+			productReference = 04004DCD20AC3AEB003FDA7F /* SYTabBarViewControllerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		04004DD720AC3AEB003FDA7F /* BLTabBarViewControllerUITests */ = {
+		04004DD720AC3AEB003FDA7F /* SYTabBarViewControllerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04004DE720AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "BLTabBarViewControllerUITests" */;
+			buildConfigurationList = 04004DE720AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "SYTabBarViewControllerUITests" */;
 			buildPhases = (
 				04004DD420AC3AEB003FDA7F /* Sources */,
 				04004DD520AC3AEB003FDA7F /* Frameworks */,
@@ -214,9 +214,9 @@
 			dependencies = (
 				04004DDA20AC3AEB003FDA7F /* PBXTargetDependency */,
 			);
-			name = BLTabBarViewControllerUITests;
+			name = SYTabBarViewControllerUITests;
 			productName = tabBarMoveAnimationUITests;
-			productReference = 04004DD820AC3AEB003FDA7F /* BLTabBarViewControllerUITests.xctest */;
+			productReference = 04004DD820AC3AEB003FDA7F /* SYTabBarViewControllerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -244,7 +244,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 04004DB020AC3AEB003FDA7F /* Build configuration list for PBXProject "BLTabBarViewController" */;
+			buildConfigurationList = 04004DB020AC3AEB003FDA7F /* Build configuration list for PBXProject "SYTabBarViewController" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -257,9 +257,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04004DB420AC3AEB003FDA7F /* BLTabBarViewController */,
-				04004DCC20AC3AEB003FDA7F /* BLTabBarViewControllerTests */,
-				04004DD720AC3AEB003FDA7F /* BLTabBarViewControllerUITests */,
+				04004DB420AC3AEB003FDA7F /* SYTabBarViewController */,
+				04004DCC20AC3AEB003FDA7F /* SYTabBarViewControllerTests */,
+				04004DD720AC3AEB003FDA7F /* SYTabBarViewControllerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -299,14 +299,14 @@
 			files = (
 				04E66C8820B10C320078BE8A /* main.m in Sources */,
 				04E66C8220B10C320078BE8A /* OneTableViewController.m in Sources */,
-				04E66C8E20B10C320078BE8A /* BLBlendingLabel.m in Sources */,
+				04E66C8E20B10C320078BE8A /* SYBlendingLabel.m in Sources */,
 				04E66C8920B10C320078BE8A /* TwoTableViewController.m in Sources */,
-				04E66C8D20B10C320078BE8A /* UIViewController+BL.m in Sources */,
+				04E66C8D20B10C320078BE8A /* UIViewController+SY.m in Sources */,
 				04E66C8B20B10C320078BE8A /* AppDelegate.m in Sources */,
-				04E66C8F20B10C320078BE8A /* BLBlendingView.m in Sources */,
+				04E66C8F20B10C320078BE8A /* SYBlendingView.m in Sources */,
 				04E66C8520B10C320078BE8A /* ViewController.m in Sources */,
 				04E66C8120B10C320078BE8A /* ThreeTableViewController.m in Sources */,
-				04E66C8C20B10C320078BE8A /* BLTabBarViewController.m in Sources */,
+				04E66C8C20B10C320078BE8A /* SYTabBarViewController.m in Sources */,
 				04E66C8A20B10C320078BE8A /* GlobalConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,12 +330,12 @@
 /* Begin PBXTargetDependency section */
 		04004DCF20AC3AEB003FDA7F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04004DB420AC3AEB003FDA7F /* BLTabBarViewController */;
+			target = 04004DB420AC3AEB003FDA7F /* SYTabBarViewController */;
 			targetProxy = 04004DCE20AC3AEB003FDA7F /* PBXContainerItemProxy */;
 		};
 		04004DDA20AC3AEB003FDA7F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 04004DB420AC3AEB003FDA7F /* BLTabBarViewController */;
+			target = 04004DB420AC3AEB003FDA7F /* SYTabBarViewController */;
 			targetProxy = 04004DD920AC3AEB003FDA7F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -470,7 +470,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4D83288DVR;
-				INFOPLIST_FILE = "$(SRCROOT)/BLTabBarViewController/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SYTabBarViewController/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.tabBarMoveAnimation;
@@ -485,7 +485,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4D83288DVR;
-				INFOPLIST_FILE = "$(SRCROOT)/BLTabBarViewController/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SYTabBarViewController/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.tabBarMoveAnimation;
@@ -504,7 +504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.tabBarMoveAnimationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BLTabBarViewController.app/BLTabBarViewController";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SYTabBarViewController.app/SYTabBarViewController";
 			};
 			name = Debug;
 		};
@@ -518,7 +518,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bianla.tabBarMoveAnimationTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BLTabBarViewController.app/BLTabBarViewController";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SYTabBarViewController.app/SYTabBarViewController";
 			};
 			name = Release;
 		};
@@ -551,7 +551,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04004DB020AC3AEB003FDA7F /* Build configuration list for PBXProject "BLTabBarViewController" */ = {
+		04004DB020AC3AEB003FDA7F /* Build configuration list for PBXProject "SYTabBarViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04004DDF20AC3AEB003FDA7F /* Debug */,
@@ -560,7 +560,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04004DE120AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "BLTabBarViewController" */ = {
+		04004DE120AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "SYTabBarViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04004DE220AC3AEB003FDA7F /* Debug */,
@@ -569,7 +569,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04004DE420AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "BLTabBarViewControllerTests" */ = {
+		04004DE420AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "SYTabBarViewControllerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04004DE520AC3AEB003FDA7F /* Debug */,
@@ -578,7 +578,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04004DE720AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "BLTabBarViewControllerUITests" */ = {
+		04004DE720AC3AEB003FDA7F /* Build configuration list for PBXNativeTarget "SYTabBarViewControllerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04004DE820AC3AEB003FDA7F /* Debug */,
