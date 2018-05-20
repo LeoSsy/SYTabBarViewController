@@ -109,8 +109,10 @@
     Class cls =  NSClassFromString(vcName);
     UIViewController *vc = [[cls alloc] init];
     //图片必须同时设置默认图片 和高亮图片才可以 否则 不会显示图片
-    vc.norImage = imageName;//如果设置了图片才会显示图标 否则不显示
-    vc.highImage = highImage;
+    if (imageName && highImage) {
+        vc.norImage = imageName;//如果设置了图片才会显示图标 否则不显示
+        vc.highImage = highImage;
+    }
     vc.title = title;
     [self addChildViewController:vc];
 }

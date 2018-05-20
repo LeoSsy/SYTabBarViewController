@@ -1,10 +1,14 @@
-## BLTabBarViewController
+## SYTabBarViewController
 
- 首先感谢你的支持，BLTabBarViewController 是一个可以灵活配置的TabBarViewController控制器
+ 首先感谢你的支持，SYTabBarViewController 是一个可以灵活配置的SYTabBarViewController控制器
  
- ## 效果
+ ## 图文渐变效果
 
  ![MacDown Screenshot](./tabbarcontrollerDemo.gif)
+ 
+ ## 文字渐变效果
+ 
+ ![MacDown Screenshot](./demo2.gif)
  
  ## 功能
  
@@ -14,13 +18,13 @@
  - [x] 支持 设置标题的背景图片
  - [x] 支持 设置标题顶部间距 以及首个标题左侧间距
  - [x] 支持 最小标题个数均匀分布屏幕
- - [x] 支持 下标宽度根据标题宽度展示
+ - [x] 支持 下标宽度根据标题宽度展示，隐藏下标，隐藏显示下划线
  - [x] 支持  配置只显示文字不显示图片功能
 
  
  ## 安装
  
- 将 BLTabBarViewController 文件夹拽入项目中，导入头文件：#import "BLTabBarViewController.h"
+ 将 SYTabBarViewController 文件夹拽入项目中，导入头文件：#import "SYTabBarViewController.h"
 
 ## 使用
 1.继承BLTabBarViewController
