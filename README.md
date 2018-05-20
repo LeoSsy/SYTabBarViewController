@@ -24,6 +24,7 @@
 1.继承BLTabBarViewController
 
 2.实现如下两个方法进行配置:
+
     - (void)configTabBarController;
     - (void)buildChildControllers;
     
