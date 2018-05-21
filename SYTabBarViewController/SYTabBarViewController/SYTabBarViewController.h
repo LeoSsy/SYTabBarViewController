@@ -2,8 +2,8 @@
 //  SYBaseViewController.h
 //  STTitleTabBarController
 //
-//  Created by ssy on 16/6/1.
-//  Copyright © 2016年 KUNROU. All rights reserved.
+//  Created by Jack on 2018/5/17.
+//  Copyright © 2018年 bianla. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
