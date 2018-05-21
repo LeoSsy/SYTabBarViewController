@@ -25,6 +25,9 @@
 /** 顶部视图背景控件 */
 @property (nonatomic, strong) UIImageView *topBgView;
 
+/** 指示器视图 */
+@property (nonatomic, weak) UIView *underLine;
+
 /** 第一个标题的宽度 */
 @property (nonatomic, assign) CGFloat firstWidth;
 
@@ -38,7 +41,7 @@
 @property(nonatomic,weak)SYBlendingView *selectedBlendView;
 
 /** 标题下划线视图 */
-@property (nonatomic, weak) UIView *titleUnderline;
+@property (nonatomic, strong) UIView *titleUnderline;
 
 /** 记录上一次内容滚动视图偏移量 */
 @property (nonatomic, assign) CGFloat previousOffsetX;
@@ -114,6 +117,7 @@
         vc.highImage = highImage;
     }
     vc.title = title;
+    if (!vc) { return;}
     [self addChildViewController:vc];
 }
 
@@ -135,37 +139,31 @@
     [self configTabBarController];
     //配置子控制器
     [self buildChildControllers];
-    //布局frame
-    CGFloat contentY = self.navigationController?SYTabBarH : [UIApplication sharedApplication].statusBarFrame.size.height;
-    CGFloat contentW = SYScreenW;
-    if (self.contentView.y) {
-        contentY = self.contentView.y;
-    }
-    CGFloat contentH = SYScreenH - contentY;
-    // 设置内容的尺寸
-    if (self.contentView.height == 0) {
-        self.contentView.frame = CGRectMake(0, 0, contentW, contentH);
-    }
-    // 设置标题尺寸
-    CGFloat titleH = self.titleHeight;
-    CGFloat titleY = 0;
-    self.topScrollView.frame = CGRectMake(0, titleY, contentW, titleH);
-    self.topScrollView.scrollsToTop = NO;
-    // 设置内容滚动视图frame
-    CGFloat contentScrollY = CGRectGetMaxY(self.topScrollView.frame);
-    self.contentScrollView.frame =CGRectMake(0, contentScrollY, contentW, contentH - contentScrollY);
-    self.contentScrollView.scrollsToTop = NO;
-    self.contentScrollView.backgroundColor = [UIColor purpleColor];
     //设置背景视图
     self.topBgView.frame = self.topScrollView.bounds;
+    //设置圆角
+    if (self.topScrollViewCornerRadius) {
+        self.topScrollView.layer.cornerRadius = self.topScrollViewCornerRadius;
+        self.topScrollView.layer.masksToBounds = YES;
+        self.topBgView.layer.cornerRadius = self.topScrollViewCornerRadius;
+        self.topBgView.layer.masksToBounds = YES;
+    }
+    //设置阴影
+    if (self.topScrollViewShadowOffset.width || self.topScrollViewShadowOffset.height) {
+        self.topScrollView.layer.shadowOffset =self.topScrollViewShadowOffset;
+    }
+    if (self.topScrollViewShadowColor) {
+        self.topScrollView.layer.shadowColor =self.topScrollViewShadowColor.CGColor;
+    }
+    // 设置是否可以自动滚动到最顶部
+    self.topScrollView.scrollsToTop = NO;
+    self.contentScrollView.scrollsToTop = NO;
     //设置下划线frame
-    UIView *titleUnderline = [[UIView alloc] init];
-    titleUnderline.alpha = 0.5;
-    titleUnderline.backgroundColor = self.titleUnderlineColor;
-    titleUnderline.frame = CGRectMake(0, CGRectGetMaxY( self.topScrollView.frame)-self.titleUnderlineHeight, SYScreenW, self.titleUnderlineHeight);
-    [self.topScrollView addSubview:titleUnderline];
-    _titleUnderline = titleUnderline;
-    
+    self.titleUnderline.alpha = 0.5;
+    self.titleUnderline.backgroundColor = self.titleUnderlineColor;
+    [self.topScrollView addSubview:self.titleUnderline];
+    //布局子控件
+    [self setLayoutViews];
     if (@available(iOS 11.0, *)) {
         self.topScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         self.contentScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -173,6 +171,7 @@
         self.automaticallyAdjustsScrollViewInsets = false;
     }
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -185,6 +184,46 @@
     //添加所有子控件
     [self addTitlViews];
 }
+
+/**
+ 布局所有子控件
+ */
+- (void)setLayoutViews {
+    //布局frame
+    CGFloat contentY = self.contentView.y;
+    CGFloat contentX = 0;
+    CGFloat contentW = SYScreenW;
+    CGFloat contentH = SYScreenH - contentY;
+    if (self.contentView.width) {
+        contentW = self.contentView.width;
+    }
+    if (self.contentView.x) {
+        contentX = self.contentView.x;
+    }
+    if (self.contentView.height) {
+        contentH = self.contentView.height;
+    }
+    self.contentView.frame = CGRectMake(contentX, contentY, contentW, contentH);
+    // 设置标题尺寸
+    CGFloat titleH = self.titleHeight;
+    CGFloat titleY = 0;
+    self.topScrollView.frame = CGRectMake(self.topScrollViewLRMargin, titleY, contentW-2*self.topScrollViewLRMargin, titleH);
+    self.topScrollView.scrollsToTop = NO;
+    //设置背景视图
+    self.topBgView.frame = self.topScrollView.bounds;
+    // 设置内容滚动视图frame
+    CGFloat contentScrollY = CGRectGetMaxY(self.topScrollView.frame);
+    self.contentScrollView.frame =CGRectMake(0, contentScrollY, contentW, contentH - contentScrollY);
+    self.contentScrollView.scrollsToTop = NO;
+    //设置下划线frame
+    self.titleUnderline.frame = CGRectMake(0, CGRectGetMaxY( self.topScrollView.frame)-self.titleUnderlineHeight, SYScreenW, self.titleUnderlineHeight);
+}
+
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self setLayoutViews];
+}
+
 
 #pragma mark 重新加载数据
 - (void)reloadData
@@ -229,11 +268,11 @@
     if (count>self.titleMinCount) {
         otherMargin = self.titleMargin;
     }else{ //计算平均间距
-        otherMargin =(SYScreenW - (self.firstMargin+self.lastMargin)- self.totalWidth)/(count-1);
+        otherMargin =(SYScreenW-3*self.topScrollViewLRMargin - (self.firstMargin+self.lastMargin)- self.totalWidth)/(count-1);
     }
     // 添加所有的标题
     for (int i = 0; i < count; i++) {
-         UIViewController *vc = self.childViewControllers[i];
+        UIViewController *vc = self.childViewControllers[i];
         SYBlendingView *topTabBar = nil;
         if (vc.norImage && vc.highImage) {
             topTabBar = [SYBlendingView blendViewWithText:vc.title image:vc.norImage highlitedImage:vc.highImage margin:5];
@@ -242,17 +281,16 @@
         }else{
             topTabBar = [SYBlendingView blendViewWithText:vc.title normalColor:self.normalColor highlitedColor:self.selectedColor textFont:self.titleFont?self.titleFont:BLTabBarNormalTitleFont];
         }
-         topTabBar.tag = i;
-         topTabBar.backgroundColor = [UIColor clearColor];
-         topTabBar.label.font = self.titleFont?self.titleFont:BLTabBarNormalTitleFont;
-         topTabBar.label.text = vc.title;
-         labelW = [self.allTitleWidths[i] floatValue];
-         SYBlendingView *lastLabel = [self.topScroSubviews lastObject];
+        topTabBar.tag = i;
+        topTabBar.label.font = self.titleFont?self.titleFont:BLTabBarNormalTitleFont;
+        topTabBar.label.text = vc.title;
+        labelW = [self.allTitleWidths[i] floatValue];
+        SYBlendingView *lastLabel = [self.topScroSubviews lastObject];
         if (i==0) {//第一个标题加上首部的间距
             labelX = self.firstMargin + CGRectGetMaxX(lastLabel.frame);
         }else if(i==count-1){//最后一个标题加上尾部的间距
             if (count<=self.titleMinCount) {
-                labelX = SYScreenW - self.lastMargin-labelW;
+                labelX = SYScreenW-2*self.topScrollViewLRMargin - self.lastMargin-labelW;
             }else{
                 labelX = otherMargin + CGRectGetMaxX(lastLabel.frame);
             }
@@ -267,6 +305,13 @@
         [self.topScrollView addSubview: topTabBar];
         //第一个标题默认设置
         if (i == 0) {
+            //判断下标视图是否展示在中间
+            if(self.underLineType == UnderLineTypeMiddle){
+                topTabBar.backgroundColor = [UIColor clearColor];
+                [self.topScrollView insertSubview:self.underLine aboveSubview:self.topBgView];
+            }else{
+                [self.topScrollView bringSubviewToFront:self.underLine];
+            }
             self.underLine.width = labelW;
             self.underLine.centerX = topTabBar.centerX;
             topTabBar.progress = 1.0;
@@ -278,8 +323,7 @@
     self.topScrollView.contentSize = CGSizeMake(CGRectGetMaxX(lastLabel.frame)-_titleMargin+_firstWidth, 0);
     self.topScrollView.showsHorizontalScrollIndicator = NO;
     self.contentScrollView.contentSize = CGSizeMake(count * SYScreenW, 0);
-    [self.topScrollView bringSubviewToFront:self.underLine];
-
+    
 }
 
 #pragma mark - 标题点击处理
@@ -313,7 +357,7 @@
 {
     //防止重复选中同一个
     if (self.selectedBlendView == blendView )  return;
-
+    
     //重置所有的状态
     self.selectedBlendView.label.textColor = self.normalColor;
     self.selectedBlendView.fillColor = self.normalColor;
@@ -324,7 +368,7 @@
     blendView.label.textColor = self.selectedColor;
     blendView.fillColor = self.selectedColor;
     if (!self.isShowGradient) {blendView.progress = 1.0;} //不需要标题渐变需要设置此属性让图片高亮
-
+    
     //设置缩放
     if (self.isScaleEffect) {
         if (!self.selectedBlendView) {//第一次不需要展示缩放动画
@@ -359,14 +403,16 @@
     // 获取文字尺寸
     CGRect titleFrame = [blendingView.label.text boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.titleFont?self.titleFont:BLTabBarNormalTitleFont} context:nil];
     self.underLine.height = self.underLineH;
-   if (self.underLineType == UnderLineTypeTop ) {//如果是顶部的下划线
+    if (self.underLineType == UnderLineTypeTop ) {//如果是顶部的下划线
         self.underLine.y = titleFrame.origin.y;
+    }else if (self.underLineType == UnderLineTypeMiddle) {//显示在中间作为背景块展示在文字下面
+        self.underLine.y = (self.topScrollView.height - self.underLine.height)*0.5;
     }else if (self.underLineType == UnderLineTypeTextBottom ){//文字底部的下划线
         CGFloat endY = self.titleTopMargin+CGRectGetMaxY(blendingView.label.frame)+self.textUnderLineMargin;
         if (endY>=blendingView.height) {endY =  blendingView.height - self.underLineH;}//如果大于标题的高度 就设置为底部的下划线
         self.underLine.y = endY;
     }else if (self.underLineType == UnderLineTypeBottom ){    //底部的下划线
-          self.underLine.y = self.topScrollView.height - (self.underLine.height-1);
+        self.underLine.y = self.topScrollView.height - (self.underLine.height-1);
     }
     self.underLine.width = titleFrame.size.width;
     //首次显示不需要动画
@@ -400,21 +446,21 @@
 //正在滚动的时候调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-        if (self.topScroSubviews.count == 0) return;
-        // 获取偏移量
-        CGFloat offsetX = scrollView.contentOffset.x;
-        NSInteger leftIndex = offsetX / SYScreenW;
-        SYBlendingView *leftView = self.topScroSubviews[leftIndex];
-        NSInteger rightIndex = leftIndex + 1;
-        SYBlendingView *rightView = nil;
-        if (rightIndex < self.topScroSubviews.count) {
-            rightView = self.topScroSubviews[rightIndex];
-        }
-        [self setGradientWithOffset:offsetX rightView:rightView leftView:leftView];
-        [self setUnderLineOffset:offsetX rightView:rightView leftView:leftView];
-        [self setScaleWithOffset:offsetX rightView:rightView leftView:leftView];
-        // 记录偏移量
-        self.previousOffsetX = offsetX;
+    if (self.topScroSubviews.count == 0) return;
+    // 获取偏移量
+    CGFloat offsetX = scrollView.contentOffset.x;
+    NSInteger leftIndex = offsetX / SYScreenW;
+    SYBlendingView *leftView = self.topScroSubviews[leftIndex];
+    NSInteger rightIndex = leftIndex + 1;
+    SYBlendingView *rightView = nil;
+    if (rightIndex < self.topScroSubviews.count) {
+        rightView = self.topScroSubviews[rightIndex];
+    }
+    [self setGradientWithOffset:offsetX rightView:rightView leftView:leftView];
+    [self setUnderLineOffset:offsetX rightView:rightView leftView:leftView];
+    [self setScaleWithOffset:offsetX rightView:rightView leftView:leftView];
+    // 记录偏移量
+    self.previousOffsetX = offsetX;
 }
 
 // 减速完成调用此方法
@@ -479,14 +525,14 @@
         leftView.fillColor = self.normalColor;
         leftView.progress = sacle;
         leftView.reversedAnimation = YES;
-
+        
     } else if(distance < 0){ // 往左边移动
         
         rightView.label.textColor = self.normalColor;
         rightView.fillColor = self.selectedColor;
         rightView.progress = sacle;
         rightView.reversedAnimation = NO;
-
+        
         leftView.label.textColor = self.selectedColor;
         leftView.fillColor = self.normalColor;
         leftView.progress = sacle;
@@ -557,6 +603,14 @@
     return _isShowUnderLine?_underLine : nil;
 }
 
+- (UIView *)titleUnderline {
+    if (!_titleUnderline) {
+        _titleUnderline = [[UIView alloc] init];
+    }
+    return _titleUnderline;
+}
+
+
 - (UIScrollView *)topScrollView
 {
     if (_topScrollView == nil) {
@@ -566,6 +620,7 @@
         topScrollView.showsHorizontalScrollIndicator = NO;
         topScrollView.showsVerticalScrollIndicator = NO;
         topScrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        topScrollView.clipsToBounds = YES;
         [self.contentView addSubview:topScrollView];
         _topScrollView = topScrollView;
     }
@@ -575,7 +630,8 @@
 - (UIImageView *)topBgView {
     if (!_topBgView) {
         _topBgView = [[UIImageView alloc] init];
-        _topBgView.contentMode = UIViewContentModeScaleAspectFit;
+        _topBgView.contentMode = UIViewContentModeScaleToFill;
+        _topBgView.clipsToBounds = YES;
         [self.topScrollView addSubview:_topBgView];
     }
     return _topBgView;
@@ -635,9 +691,18 @@
     }
 }
 
-- (void)setIsShowUnderLine:(BOOL)isShowUnderLine
-{
-    _isShowUnderLine = isShowUnderLine;
+- (void)setIsShowUnderLineCornerRadius:(BOOL)isShowUnderLineCornerRadius {
+    _isShowUnderLineCornerRadius = isShowUnderLineCornerRadius;
+    if (isShowUnderLineCornerRadius) {
+        self.underLine.layer.cornerRadius = self.underLineH*0.5;
+    }
+}
+
+- (void)setUnderLineH:(CGFloat)underLineH {
+    _underLineH = underLineH;
+    if (self.isShowUnderLineCornerRadius) {
+        self.underLine.layer.cornerRadius = self.underLineH*0.5;
+    }
 }
 
 - (void)settopScrollViewColor:(UIColor *)topScrollViewColor

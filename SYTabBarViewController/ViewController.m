@@ -35,7 +35,7 @@
     self.contentView.frame = CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height-44);
     //    self.topBgImageName = @"kehu_top_bg2";
     //    self.topBgImageContentMode = UIViewContentModeScaleAspectFill;
-    self.underLine.layer.cornerRadius = 2;
+    self.isShowUnderLineCornerRadius = 2;
 //        self.titleTopMargin = 15;
     self.textUnderLineMargin = 10;
     //    self.isShowGradient = false;

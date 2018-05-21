@@ -13,8 +13,9 @@
  */
 typedef NS_ENUM(NSUInteger, UnderLineType) {
     UnderLineTypeTop = 0,       //显示在顶部
-    UnderLineTypeTextBottom, //显示在文字下面 通过textUnderLineMargin调整文字和下划线的间距
-    UnderLineTypeBottom       //显示在底部
+    UnderLineTypeMiddle,        //显示在中间作为背景块展示在文字下面
+    UnderLineTypeTextBottom,  //显示在文字下面 通过textUnderLineMargin调整文字和下划线的间距
+    UnderLineTypeBottom        //显示在底部
 };
 
 /****以下是默认值可以配置***/
@@ -28,6 +29,14 @@ static CGFloat SYTabBarH = 64;
 @property (nonatomic, weak) UIView *contentView;
 /** 顶部滚动视图 */
 @property (nonatomic, weak) UIScrollView *topScrollView;
+/** 顶部滚动视图左右间距*/
+@property (nonatomic, assign) CGFloat topScrollViewLRMargin;
+/** 顶部滚动视图的圆角大小*/
+@property (nonatomic, assign) CGFloat topScrollViewCornerRadius;
+/** 顶部滚动视图的阴影大小*/
+@property (nonatomic, assign) CGSize topScrollViewShadowOffset;
+/** 顶部滚动视图的阴影颜色*/
+@property (nonatomic, strong) UIColor *topScrollViewShadowColor;
 /** 顶部滚动视图的背景图片 */
 @property (nonatomic, strong) UIImage *topBgImage;
 /** 顶部滚动视图的背景图片 */
@@ -76,9 +85,7 @@ static CGFloat SYTabBarH = 64;
 @property (nonatomic, assign) NSInteger titleMinCount;
 
 //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝下划线属性＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-/** 指示器视图 */
-@property (nonatomic, weak) UIView *underLine;
-// 当设置为文字底部的下划线的时候 文字和下划线的间距
+/**当设置为文字底部的下划线的时候 文字和下划线的间距*/
 @property (nonatomic, assign)CGFloat textUnderLineMargin;
 /**是否需要标题视图最下面很细的那条线*/
 @property (nonatomic, assign) BOOL isShowUnderLine;
@@ -88,6 +95,8 @@ static CGFloat SYTabBarH = 64;
 @property (nonatomic, strong) UIColor *underLineColor;
 /**下划线的高度*/
 @property (nonatomic, assign) CGFloat underLineH;
+/**是否显示下划线的圆角*/
+@property (nonatomic, assign)BOOL isShowUnderLineCornerRadius;
 
 //＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝方法＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 /**重新加载数据 如果标题相关的数据是通过网络获取 需要在获取到数据之后调用此方法刷新数据*/
@@ -112,6 +121,12 @@ static CGFloat SYTabBarH = 64;
  添加只显示标题的子控制器
  */
 - (void)addChildController:(NSString*)vcName title:(NSString*)title;
+
+/**
+ 展示对应下标的控制器
+ @param index 下标
+ */
+- (void)showViewController:(NSInteger)index;
 
 @end
 
