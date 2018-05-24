@@ -3,7 +3,7 @@
 //  STTitleTabBarController
 //
 //  Created by Jack on 2018/5/17.
-//  Copyright © 2018年 bianla. All rights reserved.
+//  Copyright © 2018年  . All rights reserved.
 //
 
 #import "SYTabBarViewController.h"
