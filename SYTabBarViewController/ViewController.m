@@ -23,7 +23,7 @@
     self.normalTitleBgColor = [UIColor clearColor];
     self.normalColor = UIColorFromRGB(0x999999);
     self.selectedColor = UIColorFromRGB(0x38c83d);
-    self.underLineColor =  UIColorFromRGB(0x38c83d);
+    self.underLineColor =  UIColorFromRGB(0x8b8b8b);
     self.underLineH = 2;
     self.titleHeight = 64;
     self.underLineType = UnderLineTypeTextBottom;
@@ -38,11 +38,11 @@
     self.isShowUnderLineCornerRadius = 2;
 //        self.titleTopMargin = 15;
     self.textUnderLineMargin = 10;
-    //    self.isShowGradient = false;
+        self.isShowGradient = YES;
     self.isShowUnderLine = YES;
-    self.scaleEffectPercent = 1.1;
+    self.scaleEffectPercent = 1.2;
     self.titleUnderlineColor = [UIColor lightTextColor];
-    
+//    self.underLineType = UnderLineTypeMiddle;
 }
 
 - (void)buildChildControllers {

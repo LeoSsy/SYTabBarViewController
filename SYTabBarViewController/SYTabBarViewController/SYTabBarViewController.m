@@ -77,6 +77,7 @@
     self.isScaleEffect = YES; //设置缩放效果
     self.isShowUnderLine = YES; //默认显示下划线
     self.titleFont = BLTabBarNormalTitleFont ; //默认标题大小15
+    self.selTitleFont = BLTabBarNormalTitleFont; //选中标题大小15
     self.titleMargin = 20; //标题之间的默认间距
     self.firstMargin = 0; //第一个标题距离屏幕左边间距
     self.lastMargin = 0; //最后一个标题距离屏幕右边的间距
@@ -128,6 +129,7 @@
     Class cls =  NSClassFromString(vcName);
     UIViewController *vc = [[cls alloc] init];
     vc.title = title;
+    if (!vc) { return;}
     [self addChildViewController:vc];
 }
 
@@ -312,10 +314,12 @@
             }else{
                 [self.topScrollView bringSubviewToFront:self.underLine];
             }
-            self.underLine.width = labelW;
-            self.underLine.centerX = topTabBar.centerX;
             topTabBar.progress = 1.0;
             [self topViewClick:tap];
+        }
+        //如果下标视图展示在中间 清除topTabBar背景颜色
+        if (self.underLineType == UnderLineTypeMiddle) {
+            [topTabBar clearBackgroundColor];
         }
     }
     // 设置标题滚动范围
@@ -336,7 +340,7 @@
     //记录标题被点击
     self.isClickedTitle = YES;
     if (i == 0 && !self.selectedBlendView) { //解决第一次初始选中第一个标题无法拿到子控件的frame问题
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self selectTitleFromView:label];
         });
     }else{
@@ -360,6 +364,7 @@
     
     //重置所有的状态
     self.selectedBlendView.label.textColor = self.normalColor;
+    self.selectedBlendView.textFont = self.titleFont;
     self.selectedBlendView.fillColor = self.normalColor;
     [self.selectedBlendView resentImage];
     self.selectedBlendView.progress = 0;
@@ -367,6 +372,7 @@
     //设置当前状态
     blendView.label.textColor = self.selectedColor;
     blendView.fillColor = self.selectedColor;
+    blendView.textFont = self.selTitleFont;
     if (!self.isShowGradient) {blendView.progress = 1.0;} //不需要标题渐变需要设置此属性让图片高亮
     
     //设置缩放
@@ -414,14 +420,18 @@
     }else if (self.underLineType == UnderLineTypeBottom ){    //底部的下划线
         self.underLine.y = self.topScrollView.height - (self.underLine.height-1);
     }
-    self.underLine.width = titleFrame.size.width;
+    //设置下划线的宽度
+    if (self.underLineWidth) {
+        self.underLine.width = self.underLineWidth;
+    }else{
+        self.underLine.width = titleFrame.size.width;
+    }
     //首次显示不需要动画
     if (self.underLine.x ==0 ) {
         self.underLine.centerX = blendingView.centerX;
         return;
     }
     //添加动画
-    self.underLine.width = titleFrame.size.width;
     [UIView animateWithDuration:0.25 animations:^{
         self.underLine.centerX = blendingView.centerX;
     }];
@@ -632,6 +642,7 @@
         _topBgView = [[UIImageView alloc] init];
         _topBgView.contentMode = UIViewContentModeScaleToFill;
         _topBgView.clipsToBounds = YES;
+        _topBgView.backgroundColor = [UIColor whiteColor];
         [self.topScrollView addSubview:_topBgView];
     }
     return _topBgView;
@@ -642,7 +653,7 @@
     if (_contentScrollView == nil) {
         UIScrollView *contentScrollView = [[UIScrollView alloc] init];
         _contentScrollView = contentScrollView;
-        _contentScrollView.backgroundColor = [UIColor orangeColor];
+        _contentScrollView.backgroundColor = [UIColor whiteColor];
         _contentScrollView.pagingEnabled = YES;
         _contentScrollView.showsHorizontalScrollIndicator = NO;
         _contentScrollView.bounces = NO;

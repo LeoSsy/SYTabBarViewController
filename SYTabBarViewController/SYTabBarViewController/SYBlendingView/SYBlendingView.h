@@ -52,5 +52,10 @@
  重置为默认样式
  */
 - (void)resentImage;
+
+/**
+ 清除背景颜色
+ */
+- (void)clearBackgroundColor;
 @end
 

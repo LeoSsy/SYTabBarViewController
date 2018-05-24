@@ -131,6 +131,14 @@ typedef NS_ENUM(NSUInteger, SYBlendingViewType) {
     self.highlitedImageV.image = self.oldHighImage;
 }
 
+/**
+ 清除背景颜色
+ */
+- (void)clearBackgroundColor {
+    self.bgImageV.backgroundColor = [UIColor clearColor];
+    self.highlitedImageV.backgroundColor = [UIColor clearColor];
+}
+
 - (void)setTextFont:(UIFont *)textFont {
     if (!textFont) return;
     _textFont = textFont;

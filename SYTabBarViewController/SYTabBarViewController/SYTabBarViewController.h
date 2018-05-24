@@ -55,8 +55,10 @@ static CGFloat SYTabBarH = 64;
 @property (nonatomic, weak) UIColor *titleUnderlineColor;
 /** 标题下划线视图下面很细的那条线的高度 */
 @property (nonatomic, assign) CGFloat titleUnderlineHeight;
-/**标题字体大小*/
+/**默认标题字体大小*/
 @property (nonatomic, strong) UIFont *titleFont;
+/**选中标题字体大小*/
+@property (nonatomic, strong) UIFont *selTitleFont;
 /** 是否需要渐变效果*/
 @property (nonatomic, assign) BOOL isShowGradient;
 /** 是否需要缩放效果*/
@@ -95,6 +97,8 @@ static CGFloat SYTabBarH = 64;
 @property (nonatomic, strong) UIColor *underLineColor;
 /**下划线的高度*/
 @property (nonatomic, assign) CGFloat underLineH;
+/**下划线的宽度*/
+@property (nonatomic, assign) CGFloat underLineWidth;
 /**是否显示下划线的圆角*/
 @property (nonatomic, assign)BOOL isShowUnderLineCornerRadius;
 
@@ -139,5 +143,6 @@ static CGFloat SYTabBarH = 64;
 @property (nonatomic, assign) CGFloat width;
 @property (nonatomic, assign) CGFloat height;
 @end
+
 
 
